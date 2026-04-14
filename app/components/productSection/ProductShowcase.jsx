@@ -12,7 +12,7 @@ const logos = [
     link: "https://bridgekey.io/",
   },
   {
-    src: "/assets/MST Buddy.jpg.jpeg",
+    src: "/assets/buddy.png",
     title: "MST Buddy",
     description:
       "AI-powered assistant platform acting as a 24/7 smart guide for the MST ecosystem.",
@@ -20,7 +20,7 @@ const logos = [
     link: "https://buddy.mstblockchain.com/",
   },
   {
-    src: "/assets/MST Academy.jpg.jpeg",
+    src: "/assets/acadmey.png",
     title: "MST Academy",
     description:
       "Educational gateway for blockchain mastery, certification, and Web3 developer tours.",
@@ -110,16 +110,16 @@ const LogoFlipSection = () => {
                     rotateY: tiltY,
                     transformStyle: "preserve-3d" 
                 }}
-                className="relative w-72 h-72 lg:w-[500px] lg:h-[500px] flex items-center justify-center cursor-crosshair"
+                className="relative w-72 h-72 lg:w-[500px] lg:h-[500px] flex items-center justify-center"
               >
                 {/* Visual Depth Elements */}
-                <div className="absolute inset-0 bg-red-500/5 rounded-full blur-3xl scale-75 animate-pulse" />
+                <div className="absolute inset-0 bg-red-500/10 rounded-full blur-3xl scale-75 animate-pulse" />
                 
                 {/* 3D Glass Orbit Rings */}
                 <motion.div 
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-4 border-[1px] border-dashed border-red-200 rounded-full opacity-40" 
+                  className="absolute inset-4 border-[1px] border-dashed border-red-500 rounded-full opacity-40" 
                 />
                 <motion.div 
                   animate={{ rotate: -360 }}
@@ -135,7 +135,7 @@ const LogoFlipSection = () => {
                     y: [0, -20, 0] // Continuous floating motion
                   }}
                   transition={{ 
-                    rotateY: { type: "spring", damping: 25, stiffness: 100 },
+                    rotateY: { type: "spring", damping: 20, stiffness: 100 },
                     y: { duration: 5, repeat: Infinity, ease: "easeInOut" }
                   }}
                   style={{ transformStyle: "preserve-3d" }}

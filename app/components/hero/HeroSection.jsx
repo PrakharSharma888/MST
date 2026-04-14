@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -5,6 +6,67 @@ import Link from 'next/link';
 import { motion, useMotionValue, useTransform, animate, useInView, AnimatePresence } from 'framer-motion';
 import HeroImage from './HeroImage';
 import PartnerMarquee from './PartnerMarquee';
+
+
+
+// --- Typewriter Hook ---
+function useTypewriter({ texts, typingSpeed = 20, deletingSpeed = 20, pause = 1500 }) {
+  const [index, setIndex] = useState(0);
+  const [displayed, setDisplayed] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [charIdx, setCharIdx] = useState(0);
+
+  useEffect(() => {
+    let timeout;
+    const current = texts[index].replace(/\*/g, "");
+    if (!isDeleting && charIdx < current.length) {
+      timeout = setTimeout(() => {
+        setDisplayed(current.slice(0, charIdx + 1));
+        setCharIdx((c) => c + 1);
+      }, typingSpeed);
+    } else if (!isDeleting && charIdx === current.length) {
+      timeout = setTimeout(() => {
+        setIsDeleting(true);
+      }, pause);
+    } else if (isDeleting && charIdx > 0) {
+      timeout = setTimeout(() => {
+        setDisplayed(current.slice(0, charIdx - 1));
+        setCharIdx((c) => c - 1);
+      }, deletingSpeed);
+    } else if (isDeleting && charIdx === 0) {
+      timeout = setTimeout(() => {
+        setIsDeleting(false);
+        setIndex((i) => (i + 1) % texts.length);
+      }, 400);
+    }
+    return () => clearTimeout(timeout);
+    // eslint-disable-next-line
+  }, [charIdx, isDeleting, index, texts, typingSpeed, deletingSpeed, pause]);
+
+  // For highlight, only show up to displayed.length
+  function formatTypewriterHeading(text, shownLength) {
+    let count = 0;
+    const parts = text.split("*");
+    return parts.map((part, i) => {
+      if (count >= shownLength) return null;
+      const show = part.slice(0, Math.max(0, shownLength - count));
+      count += show.length;
+      if (!show) return null;
+      return i % 2 === 1 ? (
+        <span key={i} className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D2D] via-red-600 to-rose-500">
+          {show.toUpperCase()}
+        </span>
+      ) : show.toUpperCase();
+    });
+  }
+
+  return {
+    index,
+    displayed,
+    format: (text) => formatTypewriterHeading(text, displayed.length),
+    isDeleting,
+  };
+}
 
 // --- DATA ---
 const slides = [
@@ -74,7 +136,7 @@ function formatHeading(text) {
   );
 }
 
-// --- MAIN ---
+
 export default function HeroSection() {
   const [slideCount, setSlideCount] = useState(0);
   const [headingIndex, setHeadingIndex] = useState(0);
@@ -97,6 +159,36 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen w-full bg-[#FAFAFA] overflow-hidden font-extrabold">
 
+      {/* Animated Background */}
+      <motion.div
+        animate={{ rotate: [360, 0] }}
+        transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
+        className="absolute top-[10%] left-[10%] h-[320px] w-[320px] rounded-full border-[2px] border-red-300 pointer-events-none opacity-40"
+        style={{ zIndex: 1, opacity: 0.4 }}
+      >
+        <div className="absolute bottom-[18%] right-[8%] h-[6px] w-[6px] rounded-full bg-red-600 shadow-[0_0_10px_#ff2d2d]" />
+        <motion.div
+          animate={{ rotate: [-360, 0] }}
+          transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
+          className="absolute left-[15%] top-[15%] flex items-center gap-2"
+        >
+          <span className="relative flex h-1.5 w-1.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span><span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent"></span></span>
+          <span className="whitespace-nowrap text-[9px] font-black tracking-[0.2em] text-red-300">MST BLOCKCHAIN</span>
+        </motion.div>
+      </motion.div>
+
+
+      <motion.div
+        animate={{ y: [-15, 15, -15], x: [-10, 10, -10], rotate: [0, 90, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+        className="absolute left-[35%] top-[35%] flex h-32 w-32 items-center justify-center rounded-full border-2 border-red-500 opacity-40 pointer-events-none"
+        style={{ zIndex: 1, opacity: 0.4 }}
+      >
+        <div className="h-20 w-20 rounded-full border-2 border-red-500/20" />
+        <div className="absolute top-0 h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_#ff2d2d]" />
+      </motion.div>
+
+      {/* Main Content */}
       <div className="relative z-10 mx-auto max-w-[90rem] min-h-screen grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] items-center gap-10 px-6 pt-28 pb-12">
 
         {/* LEFT */}
@@ -107,67 +199,69 @@ export default function HeroSection() {
           className="flex flex-col items-center text-center lg:items-start lg:text-left"
         >
           {/* HEADING */}
-          <div className="h-[160px] md:h-[200px] mb-20">
-            <AnimatePresence mode="wait">
-              <motion.h1
-                key={headingIndex}
-                initial={{ opacity: 0, y: 25 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -25 }}
-                transition={{ duration: 0.5 }}
-                className="text-4xl md:text-6xl leading-tight tracking-tight text-black font-extrabold uppercase"
-              >
-                {formatHeading(headings[headingIndex])}
-              </motion.h1>
-            </AnimatePresence>
+          <div className="h-[160px] md:h-[200px] mb-20 flex  justify-center lg:justify-start">
+            {(() => {
+              // Typewriter config
+              const typingSpeed = 45; // ms per character
+              const deletingSpeed = 25; // ms per character
+              const pause = 1400; // ms pause at end of word
+              const typewriter = useTypewriter({
+                texts: headings,
+                typingSpeed,
+                deletingSpeed,
+                pause,
+              });
+              return (
+                <h1 className="text-4xl md:text-6xl leading-tight tracking-tight text-black font-extrabold uppercase">
+                  {typewriter.format(headings[typewriter.index])}
+                  <span className="inline-block w-[4px] h-12 md:h-12 mb-1.5 bg-black align-middle animate-pulse ml-1" style={{verticalAlign:'middle',opacity:1}} />
+                </h1>
+              );
+            })()}
           </div>
-
-        
 
           {/* BUTTONS */}
           <div className="mt-6 sm:mt-8 grid grid-cols-2 sm:flex gap-2 sm:gap-4 w-full max-w-md">
-  
-  <Link
-    href="#"
-    className="text-center px-4 sm:px-8 py-2.5 sm:py-3 bg-black text-white text-[9px] sm:text-[11px] font-bold uppercase tracking-wide sm:tracking-widest rounded-full hover:bg-[#EA3446] transition-all shadow-md sm:shadow-lg shadow-black/10"
-  >
-    Get Started
-  </Link>
+            <Link
+              href="#"
+              className="text-center px-4 sm:px-8 py-2.5 sm:py-3 bg-black text-white text-[9px] sm:text-[11px] font-bold uppercase tracking-wide sm:tracking-widest rounded-full hover:bg-[#EA3446] transition-all shadow-md sm:shadow-lg shadow-black/10"
+            >
+              Get Started
+            </Link>
 
-  <Link
-    href="#"
-    className="text-center px-4 sm:px-8 py-2.5 sm:py-3 border border-black/10 bg-white/50 backdrop-blur-sm text-black text-[9px] sm:text-[11px] font-bold uppercase tracking-wide sm:tracking-widest rounded-full hover:border-[#FF2D2D] transition-all"
-  >
-    Documentation
-  </Link>
-
-</div>
+            <Link
+              href="#"
+              className="text-center px-4 sm:px-8 py-2.5 sm:py-3 border border-black/10 bg-white/50 backdrop-blur-sm text-black text-[9px] sm:text-[11px] font-bold uppercase tracking-wide sm:tracking-widest rounded-full hover:border-[#FF2D2D] transition-all"
+            >
+              Documentation
+            </Link>
+          </div>
 
           {/* STATS */}
-        <div className="mt-5 sm:mt-5 mb-5 grid grid-cols-3 gap-2 sm:gap-4 w-full max-w-xl ">
-  {stats.map((stat) => (
-    <div
-      key={stat.label}
-      className="group  p-2 sm:p-4 bg-white/60 border border-black/5 rounded-lg sm:rounded-2xl backdrop-blur-md hover:border-[#FF2D2D]/40 transition-all text-left"
-    >
-      <p className="text-[8px] sm:text-[10px] uppercase tracking-wide text-black/40 flex items-center gap-1">
-        {stat.active && (
-          <span className="h-1 w-1 rounded-full bg-[#FF2D2D] animate-ping" />
-        )}
-        {stat.label}
-      </p>
+          <div className="mt-5 sm:mt-5 mb-5 grid grid-cols-3 gap-2 sm:gap-4 w-full max-w-xl ">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="group  p-2 sm:p-4 bg-white/60 border border-black/5 rounded-lg sm:rounded-2xl backdrop-blur-md hover:border-[#FF2D2D]/40 transition-all text-left"
+              >
+                <p className="text-[8px] sm:text-[10px] uppercase tracking-wide text-black/40 flex items-center gap-1">
+                  {stat.active && (
+                    <span className="h-1 w-1 rounded-full bg-[#FF2D2D] animate-ping" />
+                  )}
+                  {stat.label}
+                </p>
 
-      <p className="text-2xl sm:text-4xl font-extrabold mt-1 text-black group-hover:text-[#FF2D2D] transition-colors">
-        <CountUp
-          value={stat.value}
-          prefix={stat.prefix}
-          suffix={stat.suffix}
-          decimals={stat.value % 1 !== 0 ? 1 : 0}
-        />
-      </p>
-    </div>
-  ))}
-</div>
+                <p className="text-2xl sm:text-4xl font-extrabold mt-1 text-black group-hover:text-[#FF2D2D] transition-colors">
+                  <CountUp
+                    value={stat.value}
+                    prefix={stat.prefix}
+                    suffix={stat.suffix}
+                    decimals={stat.value % 1 !== 0 ? 1 : 0}
+                  />
+                </p>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* RIGHT */}

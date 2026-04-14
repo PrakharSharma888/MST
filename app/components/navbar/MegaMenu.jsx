@@ -55,16 +55,16 @@ const buildResources = [
   {
     title: 'DEVELOPER RESOURCES',
     items: [
-      { label: 'Testnet', href: 'https://mstscan.com/' },
-      { label: 'Faucet', href: 'https://faucet.mstblockchain.com/' },
-      { label: 'Developer Docs', href: 'https://docs.mstblockchain.com/developer-docs' },
-      { label: 'MST Explorer', href: 'https://mstscan.com/' }
+      { label: 'Testnet', href: '#' },
+      { label: 'Faucet', href: '#' },
+      { label: 'Developer Docs', href: '#' },
+      { label: 'MST Explorer', href: '#' }
     ]
   },
   {
     title: 'SUPPORT & PROGRAMS',
     items: [
-      { label: 'Grant Program', href: '/learn/grant' },
+      { label: 'Grant Program', href: '/grant' },
       { label: 'Developer Support Forum', href: '#' },
       { label: 'Personalized Dev Support', href: '#' }
     ]
@@ -75,54 +75,36 @@ const learnResources = [
   {
     title: 'BLOCKCHAIN',
     items: [
-      { label: 'Block Validation Process', href: '/learn/Block-validation' },
-      { label: 'DAO & MST Chain', href: '/learn/dao' },
-      { label: 'No Code Fractional Validator', href: '/learn/fractional-validator' },
-      { label: 'Solidity : EVM Programming Language', href: '/learn/solidity' },
-      { label: 'Transparency', href: '/learn/tranpernaency' }
+      { label: 'Block Validation Process', href: '#' },
+      { label: 'DAO & MST Chain', href: '#' },
+      { label: 'No Code Fractional Validator', href: '#' },
+      { label: 'Solidity : EVM Programming Language', href: '#' },
+      { label: 'Transparency', href: '#' }
     ]
   }
 ];
 
-
-// Latest Tweet State
-function useLatestTweet() {
-  const [tweet, setTweet] = useState(null);
-  useEffect(() => {
-    async function fetchTweet() {
-      try {
-        const res = await fetch("https://widget-data.service.elfsight.com/api/twitter/profile?username=MasterStrokeTec", {
-          headers: {
-            "x-widget-token": "YOUR_TOKEN"
-          }
-        });
-        const data = await res.json();
-        const latestTweet = data.items?.[0]?.text || null;
-        setTweet(latestTweet);
-      } catch (e) {
-        setTweet(null);
-      }
-    }
-    fetchTweet();
-  }, []);
-  return tweet;
-}
+const learnHighlights = {
+  title: 'HIGHLIGHTS',
+  label: 'LATEST TWEET',
+  placeholder: 'Tweet content coming soon'
+};
 
 const productsResources = [
   {
     name: 'BridgeKey',
     description: 'Cross-chain asset bridging',
-    href: 'https://bridgekey.io/'
+    href: '#'
   },
   {
     name: 'MST Buddy',
     description: 'Developer assistant toolkit',
-    href: 'https://buddy.mstblockchain.com/'
+    href: '#'
   },
   {
-    name: 'MST Acadmey',
+    name: 'ChainPay',
     description: 'Seamless Web3 payments',
-    href: 'https://www.youtube.com/channel/UCHXMPioA5ETDiHnNlCbIbrg'
+    href: '#'
   }
 ];
 
@@ -352,7 +334,6 @@ function MegaMenu({
 }
 
 export default function Navbar() {
-  const latestTweet = useLatestTweet();
   const navbarRef = useRef(null);
   const buildButtonRef = useRef(null);
   const learnButtonRef = useRef(null);
@@ -498,12 +479,11 @@ export default function Navbar() {
       }))}
       highlight={{
         sectionTitle: 'LATEST UPDATE',
-        eyebrow: 'LATEST TWEET',
-        title: 'Latest Tweet',
+        eyebrow: learnHighlights.label,
+        title: 'Knowledge drops are coming',
         description:
-          latestTweet || 'Tweet content coming soon',
-        cta: 'View on Twitter',
-        href: 'https://twitter.com/MasterStrokeTec',
+          'A premium learning experience is on the way — deep dives, validator guides, and product walkthroughs.',
+        cta: 'Explore learning',
         icon: FiBookOpen
       }}
     />
@@ -860,7 +840,7 @@ export default function Navbar() {
                         <div className="rounded-none border border-white/15 bg-white/10 p-4">
                           <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-white/50">LATEST TWEET</div>
                           <div className="flex h-[120px] items-center justify-center border border-white/10 bg-black/20 text-xs text-white/60">
-                            {latestTweet || 'Tweet content coming soon'}
+                            Tweet content coming soon
                           </div>
                         </div>
                       </div>

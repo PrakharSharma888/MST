@@ -102,13 +102,14 @@ export default function EcosystemSection() {
             description="Run reliable node infrastructure, secure consensus, and earn rewards by participating at protocol level."
           />
 
-          <PartnerCard 
-            className="md:col-span-5"
-            icon={Icons.ambassador}
-            tag="Community"
-            title="AMBASSADOR"
-            description="Represent MST across communities, onboard builders, and expand ecosystem reach."
-          />
+          <a href="/Ambassador" className="md:col-span-5 block">
+            <PartnerCard 
+              icon={Icons.ambassador}
+              tag="Community"
+              title="AMBASSADOR"
+              description="Represent MST across communities, onboard builders, and expand ecosystem reach."
+            />
+          </a>
 
           <PartnerCard 
             className="md:col-span-5"

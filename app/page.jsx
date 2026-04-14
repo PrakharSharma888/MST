@@ -25,7 +25,7 @@ export default function HomePage() {
       <EcosystemSection/>
       
       <MSTBlogSection/>
-      <StructuralPurity/>
+      {/* <StructuralPurity/> */}
       <MSTEventSection/>
       <MSTInstitutional/>
       <FAQSection/>
