@@ -115,7 +115,7 @@ export default function EcosystemSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-12">
 
-          <a href="/Career" className="md:col-span-7 block">
+          <a href="/validator" className="md:col-span-7 block">
             <PartnerCard 
               icon={Icons.validator}
               tag="Incentivized"
@@ -170,7 +170,7 @@ function PartnerCard({ icon, title, description, className, tag }) {
   return (
     <motion.div 
       whileHover={{ y: -5 }}
-      className={`group relative bg-white border border-gray-200 rounded-3xl p-8 transition-colors hover:border-red-500/50 ${className}`}
+      className={`group relative bg-white border border-black/50 border-[1px] rounded-3xl p-8 transition-colors hover:border-red-500/50 ${className}`}
     >
       <div className="flex justify-between items-start mb-12">
         <div className="p-3 bg-red-100 text-red-600 rounded-2xl group-hover:bg-red-600 group-hover:text-white transition-all duration-300">

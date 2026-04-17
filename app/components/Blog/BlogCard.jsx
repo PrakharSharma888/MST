@@ -121,7 +121,7 @@ function BlogCard({ post, index }) {
           {post.date}
         </span>
       </div>
-{/* bungee-regular text-6xl md:text-6xl leading-tight tracking-tight text-black font-extrabold uppercase */}
+
       {/* TITLE */}
       <h3 className=" bungee-regular text-3xl font-bold mb-4 tracking-tight group-hover:text-red-500 transition-colors duration-300 leading-[1.1]">
         {post.title}

@@ -1,4 +1,6 @@
+
 "use client";
+
 
 import React from "react";
 import { motion } from "framer-motion";
@@ -8,7 +10,7 @@ import { FaInstagram, FaTwitter, FaLinkedin, FaFacebook, FaYoutube, FaTelegram }
 export default function Footer() {
   return (
     <div className="bg-white pt-24">
-      <footer className="relative bg-white pt-20 pb-10 rounded-t-[60px] md:rounded-t-[100px] border-t border-red-200 font-sans overflow-hidden">
+      <footer className="relative bg-white pt-20 pb-10 rounded-t-[60px] md:rounded-t-[100px] border-t border-red-500 font-sans overflow-hidden">
             {/* 🔴 Background Glow */}
                 <div className="absolute inset-0 pointer-events-none">
                   <div className="absolute w-[400px] h-[400px] bg-red-500/20 blur-[120px] top-[-100px] left-[-100px]" />
@@ -99,7 +101,7 @@ export default function Footer() {
               </div>
 
               <h3 className="bungee-regular text-lg md:text-lg leading-tight tracking-tight text-black font-extrabold uppercase mb-6" >
-                MST Blockchain
+                MST <span className="text-red-600">Blockchain</span>
               </h3>
 
               <p className="text-gray-600 text-sm leading-relaxed max-w-[260px]" style={{ fontFamily: 'Poppins', fontWeight: 400 }}>
@@ -109,40 +111,40 @@ export default function Footer() {
 
             {/* ECOSYSTEM */}
             <div className="col-span-1 sm:col-span-1 lg:col-span-3 mb-10 sm:mb-0 text-center">
-              <h4 className="bungee-regular text-lg md:text-lg leading-tight tracking-tight text-black font-extrabold uppercase mb-6" >Ecosystem</h4>
+              <h4 className="bungee-regular text-lg md:text-lg leading-tight tracking-tight text-red-600 font-extrabold uppercase mb-6" >Ecosystem</h4>
               <ul className="space-y-4  text-gray-600 text-sm">
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>Build</li>
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>Validators</li>
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>Governance</li>
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>Grants</li>
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>Events</li>
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>Openings</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">Build</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">Validators</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">Governance</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">Grants</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">Events</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">Openings</li>
               </ul>
             </div>
 
             {/* USE CASES */}
             <div className="col-span-1 sm:col-span-1 lg:col-span-3 mb-10 sm:mb-0 text-center">
-              <h4 className="bungee-regular text-lg md:text-lg leading-tight tracking-tight text-black font-extrabold uppercase mb-6" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>Use Cases</h4>
+              <h4 className="bungee-regular text-lg md:text-lg leading-tight tracking-tight text-red-600 font-extrabold uppercase mb-6" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>Use Cases</h4>
               <ul className="space-y-4 text-gray-600 text-sm">
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>Supply Chain</li>
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>Real Estate Tokenization</li>
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>DeFi Liquidity</li>
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>Secure Healthcare</li>
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>Digital Identity</li>
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>Lending Pools</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">Supply Chain</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">Real Estate Tokenization</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">DeFi Liquidity</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">Secure Healthcare</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">Digital Identity</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">Lending Pools</li>
               </ul>
             </div>
 
             {/* RESOURCES */}
             <div className="col-span-1 sm:col-span-1 lg:col-span-3 mb-10 sm:mb-0 text-center">
-              <h4 className="bungee-regular text-lg md:text-lg leading-tight tracking-tight text-black font-extrabold uppercase mb-6">Resources</h4>
+              <h4 className="bungee-regular text-lg md:text-lg leading-tight tracking-tight text-red-600 font-extrabold uppercase mb-6">Resources</h4>
               <ul className="space-y-4 text-gray-600 text-sm">
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>Whitepaper</li>
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>Docs</li>
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>GitHub</li>
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>Support</li>
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>Careers</li>
-                <li className="hover:text-red-500 cursor-pointer transition" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>Sitemap</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">Whitepaper</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">Docs</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">GitHub</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">Support</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">Careers</li>
+                <li className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal">Sitemap</li>
               </ul>
             </div>
 
@@ -171,8 +173,8 @@ export default function Footer() {
                 <div className="flex items-center gap-4 flex-shrink-0 ml-0 md:ml-auto md:pl-10 mt-6 md:mt-0">
                   <a
                     href="mailto:support@mstblockchain.com"
-                    className="text-gray-600 text-sm whitespace-nowrap"
-                    style={{ fontFamily: 'Poppins', fontWeight: 400 }}
+                    className="hover:text-red-500 cursor-pointer transition font-aeonik font-normal text-sm whitespace-nowrap"
+                    
                   >
                     support@mstblockchain.com
                   </a>

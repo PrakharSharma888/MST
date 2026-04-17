@@ -187,7 +187,7 @@ export default function ValidatorPage() {
 
         {/* LEFT TEXT */}
         <div>
-          <h1 className="text-5xl md:text-6xl font-bold leading-tight text-gray-800">
+          <h1 className="bungee-regular text-6xl md:text-6xl leading-tight tracking-tight text-black font-extrabold uppercase">
             Own a Piece of <br />
             <span className="text-red-500">MST Blockchain</span>
           </h1>
@@ -234,7 +234,7 @@ export default function ValidatorPage() {
 
       
       <section className="relative z-10 max-w-6xl mx-auto px-6 py-16 space-y-20">
-        <h1 className="text-5xl md:text-6xl font-bold leading-tight text-gray-800">
+        <h1 className="bungee-regular text-6xl md:text-6xl leading-tight tracking-tight text-black font-extrabold uppercase">
             From Sign-Up to<br />
             <span className="text-red-500">Rewards in Minutes </span>
           </h1>
@@ -246,7 +246,7 @@ export default function ValidatorPage() {
                 <Icon />
               </div>
 
-              <h2 className="text-3xl mt-6 font-semibold">{title}</h2>
+              <h2 className="bungee-regular text-4xl md:text-4xl leading-tight tracking-tight text-black font-extrabold uppercase mt-6">{title}</h2>
               <p className="text-gray-500 mt-3">{description}</p>
             </div>
 
@@ -272,7 +272,7 @@ export default function ValidatorPage() {
           <div className="absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-red-300/20 blur-[90px]" />
 
           <div className="relative px-6 py-14 md:px-10">
-            <h2 className="text-4xl md:text-6xl font-bold leading-tight text-gray-900 text-center">
+            <h2 className="bungee-regular text-4xl md:text-4xl leading-tight tracking-tight text-black font-extrabold uppercase text-center">
               Why Fractional
               <br />
               <span className="text-red-500">Validators?</span>
@@ -337,7 +337,7 @@ export default function ValidatorPage() {
           <div className="absolute -left-44 top-24 h-[420px] w-[420px] rounded-full border border-red-300/20" />
 
           <div className="relative max-w-7xl mx-auto px-6 py-14 md:px-10">
-            <h2 className="text-center text-4xl md:text-6xl font-bold leading-tight text-gray-900">
+            <h2 className="bungee-regular text-4xl md:text-4xl leading-tight tracking-tight text-black font-extrabold uppercase text-center">
               Blockchain Rewards
               <br />
               <span className="text-red-500">Without Technical Barriers</span>

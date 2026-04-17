@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function MSTInstitutional() {
   return (
     <div className="px-5 md:px-10 py-20 bg-white">
-      <div className="max-w-7xl mx-auto rounded-[40px] bg-gradient-to-br from-[#f9f9f9] via-[#ffffff] to-[#f0f0f0] border border-black/10 p-10 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-10 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto rounded-[40px] bg-gradient-to-br from-[#f9f9f9] via-[#ffffff] to-[#f0f0f0] border border-black/30 p-10 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-10 relative overflow-hidden">
         
         {/* 🔴 Background Glow */}
         <div className="absolute inset-0 pointer-events-none">

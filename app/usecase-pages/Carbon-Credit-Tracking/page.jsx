@@ -87,12 +87,24 @@ function FeatureCard({ title, description, icon: Icon }) {
     <motion.article
       whileHover={{ y: -6, scale: 1.01 }}
       transition={{ duration: 0.25 }}
-      className="group rounded-2xl border border-white/10 bg-black/90 p-6 text-white shadow-[0_16px_40px_rgba(0,0,0,0.18)] backdrop-blur-md transition-all duration-300 hover:border-[#ff2d2d]/50 hover:shadow-[0_20px_48px_rgba(255,45,45,0.12)]"
+      className="group rounded-2xl border h-70 w-100 border-white/10 bg-black/90 p-6 text-center  text-white shadow-[0_16px_40px_rgba(0,0,0,0.18)] backdrop-blur-md transition-all duration-300 hover:border-[#ff2d2d]/50 hover:shadow-[0_20px_48px_rgba(255,45,45,0.12)]"
     >
       <div className="mb-4 inline-flex rounded-xl border border-[#ff2d2d]/20 bg-[#ff2d2d]/8 p-2.5">
         <Icon className="h-5 w-5 text-[#ff2d2d]" />
       </div>
-      <h3 className="font-[var(--font-space-grotesk)] text-xl font-bold tracking-[-0.01em] text-white">{title}</h3>
+      <h3 className="bungee-regular text-2xl md:text-2xl leading-tight tracking-tight text-white font-extrabold uppercase mb-5">
+        {typeof title === 'string' && title.includes(' ') ? (
+          <>
+            {title.split(' ').map((word, idx) =>
+              idx === 1 ? (
+                <span key={idx} className="text-red-600">{word}</span>
+              ) : (
+                ' ' + word
+              )
+            )}
+          </>
+        ) : title}
+      </h3>
       <p className="mt-3 text-sm leading-relaxed text-white/68">{description}</p>
     </motion.article>
   );
@@ -116,7 +128,21 @@ function ProofCard({ title, description, image, alt }) {
         />
       </div>
       <div className="p-5 flex flex-col flex-1">
-        <h3 className="font-[var(--font-space-grotesk)] text-lg font-bold text-black">{title}</h3>
+        <h3 className="bungee-regular text-2xl md:text-2xl leading-tight tracking-tight text-black font-extrabold uppercase ">
+          {typeof title === 'string' && title.includes(' ') ? (
+            <>
+              {(() => {
+                const words = title.split(' ');
+                return words.map((word, idx) => {
+                  if (idx === 0 || idx === words.length - 1) {
+                    return <span key={idx} className="text-red-600">{word}</span>;
+                  }
+                  return ' ' + word;
+                });
+              })()}
+            </>
+          ) : <span className="text-red-600">{title}</span>}
+        </h3>
         <p className="mt-2 text-sm leading-relaxed text-black/68">{description}</p>
         <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#ff2d2d] transition-transform duration-300 group-hover:translate-x-1">
           Read More <ArrowRight className="h-4 w-4" />
@@ -129,7 +155,21 @@ function ProofCard({ title, description, image, alt }) {
 function StepFlow({ title, steps, accent = false }) {
   return (
     <div className="rounded-2xl border border-black/10 bg-white p-6 shadow-[0_14px_34px_rgba(0,0,0,0.05)] min-h-[340px] flex flex-col h-full">
-      <h3 className="font-[var(--font-space-grotesk)] text-2xl font-bold tracking-[-0.02em] text-black">{title}</h3>
+      <h3 className="bungee-regular text-3xl md:text-3xl leading-tight tracking-tight text-black font-extrabold uppercase">
+        {typeof title === 'string' && title.includes(' ') ? (
+          <>
+            {(() => {
+              const words = title.split(' ');
+              return words.map((word, idx) => {
+                if (idx === 0 || idx === words.length - 1) {
+                  return <span key={idx} className="text-red-600">{word}</span>;
+                }
+                return ' ' + word;
+              });
+            })()}
+          </>
+        ) : <span className="text-red-600">{title}</span>}
+      </h3>
       <div className="mt-6 space-y-4">
         {steps.map((step, index) => (
           <div key={step} className="flex items-start gap-3">
@@ -157,7 +197,7 @@ const [formType, setFormType] = useState("General Enquiry");
         <SectionFade className="relative mx-auto max-w-[90rem] space-y-6">
           <div className="max-w-4xl space-y-5">
             <div className="relative inline-block">
-              <h1 className="font-[var(--font-space-grotesk)] text-4xl font-extrabold tracking-[-0.06em] text-black sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+              <h1 className="bungee-regular text-6xl md:text-6xl leading-tight tracking-tight text-black font-extrabold uppercase">
                 <span className="block">
                   Carbon Credit 
                 </span>
@@ -194,8 +234,8 @@ const [formType, setFormType] = useState("General Enquiry");
       {/* INTRO */}
       <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-10 px-6 py-16 md:px-16 lg:grid-cols-2 lg:items-center">
         <SectionFade className="space-y-5">
-          <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">
-          What is Blockchain Carbon Credit Tracking?
+          <h2 className="bungee-regular text-6xl md:text-4xl leading-tight tracking-tight text-black font-extrabold uppercase">
+          What is <span className="text-red-600">Blockchain</span> Carbon <span className="text-red-600">Credit</span> Tracking?
           </h2>
           <p className="max-w-2xl text-base leading-8 text-black/70">
           A carbon credit represents one tonne of carbon dioxide reduced or removed from the atmosphere. Organizations buy these credits to offset their own emissions. The problem is that existing carbon markets are opaque — credits get double-counted, retirement records are unreliable, and organizations cannot always prove that the credits they bought are genuinely retired. MST Blockchain solves this by creating a transparent, permanent, publicly verifiable record for every carbon credit from issuance through to retirement.
@@ -235,14 +275,14 @@ const [formType, setFormType] = useState("General Enquiry");
       {/* PROBLEM + SOLUTION */}
       <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-10 px-6 py-16 md:px-16 lg:grid-cols-2 lg:items-center">
         <SectionFade className="space-y-5 border-l-2 border-[#ff2d2d] pl-5 md:pl-6">
-          <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">
-            The Problem: Carbon Markets are Riddled with Credibility Issues
+          <h2 className="bungee-regular text-4xl md:text-4xl leading-tight tracking-tight text-black font-extrabold uppercase mb-5">
+           <span className="text-red-600">The Problem:</span> Carbon Markets are Riddled with Credibility Issues
           </h2>
           <p className="text-base leading-8 text-black/70">
             Studies have found that a significant portion of carbon credits sold on voluntary markets do not represent genuine emission reductions. Credits get double-counted across different registries. Retirement records are easy to manipulate. Companies claiming carbon neutrality often cannot actually prove that their purchased offsets were genuinely retired. This undermines the entire purpose of carbon markets and erodes public trust in corporate sustainability claims.
           </p>
 
-          <h3 className="pt-2 font-[var(--font-space-grotesk)] text-2xl font-bold text-black">How MST Fixes It </h3>
+          <h3 className="bungee-regular text-4xl md:text-4xl leading-tight tracking-tight text-black font-extrabold uppercase mb-5">How <span className="text-red-600">MST</span> Fixes It </h3>
           <p className="text-base leading-8 text-black/70">
            Every carbon credit issued on MST gets a unique on-chain token representing one tonne of verified CO₂ reduction. Every transfer between organizations is recorded. When a credit is retired, the retirement is permanently locked on-chain — it cannot be used again, transferred, or claimed by anyone else. External data sources like satellite imagery, IoT sensors, and third-party auditor reports can be fed into the system via WASMify to verify the underlying emission reduction activities.
           </p>
@@ -264,7 +304,7 @@ const [formType, setFormType] = useState("General Enquiry");
       {/* PROOFS */}
       <section className="mx-auto w-full max-w-[90rem] px-6 py-16 md:px-16">
         <SectionFade className="space-y-3">
-          <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">Proofs of Concept</h2>
+          <h2 className="bungee-regular text-6xl md:text-6xl leading-tight tracking-tight text-black font-extrabold uppercase"> <span className="text-red-600">Proofs</span> of <span className="text-red-600">Concept</span> </h2>
           <p className="max-w-2xl text-base leading-8 text-black/68">
             Real-world examples showing how this use case works in practice across different industries and regions.
           </p>
@@ -304,7 +344,7 @@ const [formType, setFormType] = useState("General Enquiry");
               {stats.map((stat) => (
                 <div key={stat.label} className="rounded-2xl border border-white/10 bg-white/5 px-5 py-5 backdrop-blur-sm">
                   <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/55">{stat.label}</p>
-                  <p className="mt-2 font-[var(--font-space-grotesk)] text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl">
+                  <p className="bungee-regular text-3xl md:text-3xl leading-tight tracking-tight text-red-600 font-extrabold uppercase">
                     {stat.value}
                   </p>
                 </div>

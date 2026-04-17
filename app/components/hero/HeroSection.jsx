@@ -70,9 +70,9 @@ function useTypewriter({ texts, typingSpeed = 20, deletingSpeed = 20, pause = 15
 
 // --- DATA ---
 const slides = [
-  { src: '/img1.webp', alt: 'Institutional Web3' },
-  { src: '/img3.jpeg', alt: 'Data Visualization' },
-  { src: '/img2.jpg', alt: 'Decentralized Network' }
+  { src: '/img1.jpeg', alt: 'Institutional Web3' },
+  { src: '/img3.png', alt: 'Data Visualization' },
+  { src: '/img2.png', alt: 'Decentralized Network' }
 ];
 
 const headings = [
@@ -202,7 +202,7 @@ export default function HeroSection() {
           <div className="h-[160px] md:h-[200px] mb-20 flex  justify-center lg:justify-start">
             {(() => {
               // Typewriter config
-              const typingSpeed = 45; // ms per character
+              const typingSpeed = 15; // ms per character
               const deletingSpeed = 25; // ms per character
               const pause = 1400; // ms pause at end of word
               const typewriter = useTypewriter({

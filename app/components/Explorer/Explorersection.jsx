@@ -177,9 +177,9 @@ function DataCard({ title, items, type, formatTime }) {
   return (
     <div className="relative group">
       
-      <div className="relative bg-white/80 backdrop-blur-xl border border-gray-200 rounded-2xl p-6 h-full z-10">
+      <div className="relative bg-white/80 backdrop-blur-xl border border-black/50 border-[1px] rounded-2xl p-6 h-full z-10">
 
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex justify-between  items-center mb-8">
           <h3 className="text-sm font-bold tracking-widest text-gray-500 uppercase">{title}</h3>
           <div className="p-2 bg-gray-100 rounded-lg">
             {type === 'block' ? <BlockIcon /> : <TxIcon />}
@@ -199,7 +199,7 @@ function DataCard({ title, items, type, formatTime }) {
                   animate={{ opacity: isEmpty ? 0.4 : 1, x: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  className={`flex items-center justify-between p-4 rounded-xl bg-gray-50 border border-gray-100 ${!isEmpty ? 'hover:border-red-500/30 hover:bg-gray-100' : 'pointer-events-none'
+                  className={`flex items-center justify-between p-4 rounded-xl bg-gray-50 border border-black/20 border-[1px] ${!isEmpty ? 'hover:border-red-500/30 hover:bg-gray-100' : 'pointer-events-none'
                     } transition-colors`}
                 >
                   <div className="flex items-center gap-4">

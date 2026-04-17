@@ -5,6 +5,14 @@ import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+// Custom hook to detect client-side mount
+function useMounted() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  return mounted;
+}
 import {
   FiBookOpen,
   FiCode,
@@ -573,6 +581,8 @@ export default function Navbar() {
     />
   );
 
+  const mounted = useMounted();
+  if (!mounted) return null;
   return (
     <motion.header
       ref={navbarRef}
@@ -588,18 +598,17 @@ export default function Navbar() {
           <div className="pointer-events-none absolute inset-0 bg-black/20" />
 
           <nav className="relative z-20 flex h-16 w-full items-center justify-between px-4 lg:px-8">
-           <Link href="/" className="-ml-1 flex items-center gap-2 group">
 
-    <img
-      src="https://ik.imagekit.io/avboeabnm1/images/logo.png"
-      alt="MST logo"
-      width={100}
-      height={100}
-      className="h-[40px] w-auto object-contain transition-all duration-300 group-hover:drop-shadow-xl" 
-      loading='lazy'
-    />
-
-</Link>
+          <a href="/" target="_blank" rel="noopener noreferrer" className="-ml-1 flex items-center gap-2 group">
+            <img
+              src="https://ik.imagekit.io/avboeabnm1/images/logo.png"
+              alt="MST logo"
+              width={100}
+              height={100}
+              className="h-[40px] w-auto object-contain transition-all duration-300 group-hover:drop-shadow-xl"
+              loading='lazy'
+            />
+          </a>
 
             <ul className="hidden items-center gap-10 lg:flex">
               {navItems.map((item) => (
@@ -666,14 +675,30 @@ export default function Navbar() {
                       <AnimatePresence>{activeDesktopMenu === 'usecases' ? renderUseCasesDropdown() : null}</AnimatePresence>
                     </div>
                   ) : (
-                    <Link href={item.href} className={navLinkClass(item.active)}>
-                      <span>{item.label}</span>
-                      <span
-                        className={`absolute -bottom-1 left-0 h-[1.5px] bg-[#ff2d2d] transition-all duration-300 ${
-                          item.active ? 'w-full' : 'w-0 group-hover:w-full'
-                        }`}
-                      />
-                    </Link>
+                    (item.href && item.href.startsWith('http') ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={navLinkClass(item.active)}
+                      >
+                        <span>{item.label}</span>
+                        <span
+                          className={`absolute -bottom-1 left-0 h-[1.5px] bg-[#ff2d2d] transition-all duration-300 ${
+                            item.active ? 'w-full' : 'w-0 group-hover:w-full'
+                          }`}
+                        />
+                      </a>
+                    ) : (
+                      <Link href={item.href} className={navLinkClass(item.active)}>
+                        <span>{item.label}</span>
+                        <span
+                          className={`absolute -bottom-1 left-0 h-[1.5px] bg-[#ff2d2d] transition-all duration-300 ${
+                            item.active ? 'w-full' : 'w-0 group-hover:w-full'
+                          }`}
+                        />
+                      </Link>
+                    ))
                   )}
                 </li>
               ))}
@@ -687,6 +712,8 @@ export default function Navbar() {
     
     <a
       href="#ecosystemSection"
+      target="_blank"
+      rel="noopener noreferrer"
       className="relative inline-flex items-center space-x-2 rounded-full mb-3
       bg-gradient-to-r from-[#ff2d2d] to-[#ff4d4d] mb-2
       px-6 py-2.5 text-[11px] font-extrabold uppercase tracking-[0.15em] text-white
@@ -710,8 +737,10 @@ export default function Navbar() {
   <div className="hidden lg:block relative group">
     <div className="absolute inset-0 rounded-full bg-white opacity-10 blur-md transition-opacity duration-300 group-hover:opacity-30" />
     
-    <Link
+    <a
       href="#"
+      target="_blank"
+      rel="noopener noreferrer"
       className="relative inline-flex items-center space-x-2 rounded-full mb-3
       bg-white px-6 py-2.5 text-[11px] font-extrabold uppercase tracking-[0.15em] text-black
       transition-all duration-300 ease-out
@@ -727,7 +756,7 @@ export default function Navbar() {
       >
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
       </svg>
-    </Link>
+    </a>
   </div>
 
 </div>
@@ -792,15 +821,29 @@ export default function Navbar() {
                           <p className="px-2 text-[10px] font-extrabold uppercase tracking-[0.22em] text-red-500">{group.title}</p>
                           <div className="space-y-1">
                             {group.items.map((item) => (
-                              <Link
-                                key={item.label}
-                                href={item.href}
-                                onClick={() => setIsOpen(false)}
-                                className="group flex items-center justify-between rounded-lg px-3 py-2 text-xs font-medium text-white/70 transition-all hover:bg-red-500/10 hover:text-white"
-                              >
-                                <span className="transition-transform duration-300 group-hover:translate-x-0.5">{item.label}</span>
-                                <ChevronRight size={12} className="text-white/25 transition-transform duration-300 group-hover:translate-x-0.5" />
-                              </Link>
+                              item.href && item.href.startsWith('http') ? (
+                                <a
+                                  key={item.label}
+                                  href={item.href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={() => setIsOpen(false)}
+                                  className="group flex items-center justify-between rounded-lg px-3 py-2 text-xs font-medium text-white/70 transition-all hover:bg-red-500/10 hover:text-white"
+                                >
+                                  <span className="transition-transform duration-300 group-hover:translate-x-0.5">{item.label}</span>
+                                  <ChevronRight size={12} className="text-white/25 transition-transform duration-300 group-hover:translate-x-0.5" />
+                                </a>
+                              ) : (
+                                <Link
+                                  key={item.label}
+                                  href={item.href}
+                                  onClick={() => setIsOpen(false)}
+                                  className="group flex items-center justify-between rounded-lg px-3 py-2 text-xs font-medium text-white/70 transition-all hover:bg-red-500/10 hover:text-white"
+                                >
+                                  <span className="transition-transform duration-300 group-hover:translate-x-0.5">{item.label}</span>
+                                  <ChevronRight size={12} className="text-white/25 transition-transform duration-300 group-hover:translate-x-0.5" />
+                                </Link>
+                              )
                             ))}
                           </div>
                         </div>
@@ -886,21 +929,39 @@ export default function Navbar() {
                   >
                     <div className="space-y-2">
                       <p className="px-2 text-[10px] font-extrabold uppercase tracking-[0.22em] text-red-500">PRODUCTS</p>
-                      {productsResources.map((product, index) => (
-                        <Link
-                          key={product.name}
-                          href={product.href}
-                          onClick={() => setIsOpen(false)}
-                          className={`block rounded-lg px-3 py-2 transition-all hover:bg-white/5 ${index !== productsResources.length - 1 ? 'border-b border-white/10' : ''}`}
-                        >
-                          <div className="text-xs font-bold text-white transition-all hover:text-red-400">
-                            {product.name}
-                          </div>
-                          <div className="mt-1 text-[11px] text-white/55">
-                            {product.description}
-                          </div>
-                        </Link>
-                      ))}
+                          {productsResources.map((product, index) => (
+                            product.href && product.href.startsWith('http') ? (
+                              <a
+                                key={product.name}
+                                href={product.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setIsOpen(false)}
+                                className={`block rounded-lg px-3 py-2 transition-all hover:bg-white/5 ${index !== productsResources.length - 1 ? 'border-b border-white/10' : ''}`}
+                              >
+                                <div className="text-xs font-bold text-white transition-all hover:text-red-400">
+                                  {product.name}
+                                </div>
+                                <div className="mt-1 text-[11px] text-white/55">
+                                  {product.description}
+                                </div>
+                              </a>
+                            ) : (
+                              <Link
+                                key={product.name}
+                                href={product.href}
+                                onClick={() => setIsOpen(false)}
+                                className={`block rounded-lg px-3 py-2 transition-all hover:bg-white/5 ${index !== productsResources.length - 1 ? 'border-b border-white/10' : ''}`}
+                              >
+                                <div className="text-xs font-bold text-white transition-all hover:text-red-400">
+                                  {product.name}
+                                </div>
+                                <div className="mt-1 text-[11px] text-white/55">
+                                  {product.description}
+                                </div>
+                              </Link>
+                            )
+                          ))}
                     </div>
                   </motion.div>
                 ) : null}

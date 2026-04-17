@@ -6,19 +6,19 @@ import { useEffect, useState } from 'react';
 
 const slides = [
   {
-    src: '/img1.webp',
+    src: '/img3.png',
     alt: 'Institutional Web3 data visualization',
     width: 1200,
     height: 900
   },
   {
-    src: '/img3.jpeg',
+    src: '/img1.jpeg',
     alt: 'Web3 data visualization',
     width: 1200,
     height: 900
   },
   {
-    src: '/img2.jpg',
+    src: '/img2.png',
     alt: 'Decentralized infrastructure abstract network',
     width: 1200,
     height: 900
