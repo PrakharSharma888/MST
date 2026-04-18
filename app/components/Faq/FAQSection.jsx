@@ -37,7 +37,7 @@ export default function FAQSection() {
 
           <h2 className="bungee-regular text-6xl md:text-6xl leading-tight text-black font-extrabold uppercase">
             Frequently Asked{" "}
-            <span className="text-red-500">Questions</span>
+            <span className="text-red-600">Questions</span>
           </h2>
 
           <p className="mt-6 text-gray-800 text-lg max-w-xl mx-auto">
@@ -107,9 +107,11 @@ export default function FAQSection() {
             <MessageCircle className="w-4 h-4 text-red-500" />
             <span>
               Still stuck?{" "}
+            <a href="https://buddy.mstblockchain.com/chat" target="_blank" rel="noopener noreferrer" className="hover:underline">
               <button className="text-black font-medium hover:underline">
                 Chat with us
               </button>
+              </a>
             </span>
           </div>
         </div>
