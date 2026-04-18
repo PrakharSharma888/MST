@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   FiShield, FiCpu, FiLayers, FiGlobe, 
-  FiArrowRight, FiCheckCircle, FiLinkedin, FiTwitter, FiCode 
+  FiArrowRight, FiCheckCircle, FiLinkedin, FiCode 
 } from "react-icons/fi";
 
 /** * DATA CONFIGURATION
@@ -26,8 +26,8 @@ const team = [
       'Promod Borate leads MST Blockchain with a strong focus on building a scalable, reliable, and user-centric blockchain ecosystem. He drives the vision across protocol development, product innovation, and ecosystem growth, ensuring MST remains production-ready and accessible for real-world adoption.',
     bio2:
       'Beyond his leadership role, Promod is passionate about simplifying complex systems into practical solutions and actively mentors emerging builders in the Web3 space, helping them turn ideas into impactful products.',
-    twitterHandle: '@mst_pramod',
-    twitterHref: '#'
+    linkedinHandle: '@Pramod Borate',
+    linkedinHref: 'https://www.linkedin.com/in/pramod-borate?utm_source=share_via&utm_content=profile&utm_medium=member_ios'
   },
   {
     name: 'Swapnil Dere',
@@ -38,11 +38,11 @@ const team = [
       'Swapnil Dere plays a key role in shaping MST Blockchain’s technical vision and system architecture, ensuring the platform is scalable, secure, and future-ready. He focuses on building a robust foundation that balances performance, reliability, and seamless composability for developers and users.',
     bio2:
       'Driven by precision and innovation, he is committed to delivering a developer-friendly ecosystem that supports continuous growth and real-world adoption.',
-    twitterHandle: '@mst_swapnil',
-    twitterHref: '#'
+    linkedinHandle: '@swapnil Dere',
+    linkedinHref: '#'
   },
   {
-    name: 'kamlesh Nagware',
+    name: 'Kamlesh Nagware',
     role: 'Director',
     image:
       '/assets/Kamlesh Sir.jpg',
@@ -50,8 +50,8 @@ const team = [
       'Kamlesh Nagware plays a crucial role in strengthening MST Blockchain’s security, reliability, and core infrastructure. He focuses on developing secure smart contract patterns and robust system primitives that enable teams to build confidently and efficiently on the MST ecosystem.',
     bio2:
       'Beyond development, he contributes by creating reference implementations, testing frameworks, and practical guides, turning best practices into scalable and repeatable development processe',
-    twitterHandle: '@mst_kamlesh',
-    twitterHref: '#'
+    linkedinHandle: '@kamlesh Nagware',
+    linkedinHref: 'https://www.linkedin.com/in/kamlesh-nagware-1456094b?utm_source=share_via&utm_content=profile&utm_medium=member_ios'
   },
   {
     name: 'Suresh Nair',
@@ -62,8 +62,8 @@ const team = [
       'Suresh Nair oversees operations at MST Blockchain, ensuring a seamless alignment between product strategy, execution, and user experience. He plays a key role in shaping how builders and community members interact with the ecosystem—making MST intuitive, accessible, and efficient at every touchpoint.',
     bio2:
       'Driven by a vision of delivering a premium and user-centric experience, he ensures that every interaction within MST reflects quality, precision, and ease of use.',
-    twitterHandle: '@mst_Suresh',
-    twitterHref: '#'
+    linkedinHandle: '@mst_Suresh',
+    linkedinHref: '#'
   },
   {
     name: 'Kalika Mishra',
@@ -74,8 +74,8 @@ const team = [
       'Kalika Mishra leads the technology vision at MST Blockchain, driving the development of a scalable, secure, and high-performance blockchain infrastructure. She works across protocol engineering, system architecture, and integrations to ensure MST remains robust, efficient, and future-ready.',
     bio2:
       'Passionate about building cutting-edge systems, she is committed to advancing MST as a developer-friendly and production-grade Web3 ecosystem.',
-    twitterHandle: '@mst_Kalika',
-    twitterHref: '#'
+    linkedinHandle: '@kalika Prasad',
+    linkedinHref: 'https://www.linkedin.com/in/kalika-prasad-mishra-036b27103?utm_source=share_via&utm_content=profile&utm_medium=member_ios'
   },
    {
     name: 'Ashish Kumar Jain',
@@ -86,10 +86,31 @@ const team = [
       'Ashish Kumar Jain leads the marketing vision at MST Blockchain, driving brand strategy, growth initiatives, and global outreach. He focuses on positioning MST as a trusted and innovative Web3 ecosystem, connecting technology with real-world adoption.',
     bio2:
       'Passionate about building impactful brands, he is committed to creating a premium, accessible, and growth-driven presence for MST in the global blockchain landscape.',
-    twitterHandle: '@mst_Ashish',
-    twitterHref: '#'
+    linkedinHandle: '@Ashish Kumar Jain',
+    linkedinHref: 'https://www.linkedin.com/in/c2ashish?utm_source=share_via&utm_content=profile&utm_medium=member_ios  '
   },
 
+];
+
+const advisors = [
+  {
+    name: 'Prasanna Lohar',
+    role: 'Technical Advisor',
+    image: '/assets/Prasanna Lohar.jpg',
+    bio: 'Prasanna Lohar supports MST Blockchain by bringing deep technical insight and strategic direction to the platform’s development and ecosystem growth.',
+    bio2: 'He focuses on strengthening the technical foundation, guiding architecture decisions, and ensuring scalability, security, and long-term sustainability of the blockchain infrastructure.',
+    // linkedinHandle: '',
+    // linkedinHref: '',
+  },
+  {
+  name: 'Adv. Ishita Sharma',
+  role: 'Legal Advisor',
+  image: '/assets/Ishita.png',
+  bio: 'Ishita Sharma advises MST Blockchain on legal frameworks, compliance strategy, and regulatory alignment within the evolving Web3 ecosystem.',
+  bio2: 'Her expertise ensures that innovation is backed by strong legal foundations, enabling secure, compliant, and scalable growth across markets.'
+    // linkedinHandle: '',
+    // linkedinHref: '',
+  },
 ];
 
 const features = [
@@ -150,7 +171,7 @@ const AboutUs = () => {
           />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center relative z-10 mb-8 sm:mb-12 md:mb-0">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -167,28 +188,21 @@ const AboutUs = () => {
               Redefining digital systems with speed, trust, and decentralization.
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-5">
-              <button className="group bg-red-600 text-white px-8 py-4 rounded-2xl shadow-xl shadow-red-200 hover:bg-red-700 transition-all flex items-center gap-2">
-                Get Started <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="px-8 py-4 rounded-2xl border border-gray-200 hover:border-red-400 hover:text-red-600 transition-all bg-white/50 backdrop-blur-md">
-                Explore Whitepaper
-              </button>
-            </div>
           </motion.div>
 
           <motion.div 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            className="relative"
+            className="relative flex justify-center items-center h-full w-full"
           >
-            <div className="absolute -inset-4 bg-gradient-to-r from-red-500 to-pink-500 rounded-[2.5rem] opacity-20 blur-2xl animate-pulse" />
-            <div className="relative h-[450px] rounded-[2rem] overflow-hidden border-4 border-white shadow-2xl">
+            <div className="absolute -inset-4 bg-gradient-to-r from-red-500 to-pink-500 rounded-[2.5rem] opacity-20 blur-2xl animate-pulse hidden sm:block" />
+            <div className="relative w-full max-w-xs sm:max-w-md md:max-w-none aspect-[4/3] sm:aspect-[5/3] md:aspect-[16/7] md:h-[450px] md:w-full md:col-span-1 rounded-[2rem] overflow-hidden border-4 border-white shadow-2xl flex items-center justify-center md:items-stretch md:justify-stretch mx-auto md:mx-0">
               <img
                 src="https://images.unsplash.com/photo-1669060475569-a7e0c78bce30?q=80&w=1032&auto=format&fit=crop"
                 alt="blockchain"
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                style={{ aspectRatio: 'inherit' }}
               />
             </div>
           </motion.div>
@@ -196,12 +210,12 @@ const AboutUs = () => {
       </section>
 
       {/* 2. STATS SECTION */}
-      <section className="px-6 -mt-12 relative z-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 bg-white/90 backdrop-blur-2xl border border-white p-10 rounded-[3rem] shadow-2xl shadow-gray-200/50">
+      <section className="px-4 sm:px-6 mt-2 sm:mt-0 relative z-20">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 bg-white/90 backdrop-blur-2xl border border-white p-6 sm:p-8 md:p-10 rounded-3xl md:rounded-[3rem] shadow-2xl shadow-gray-200/50">
           {stats.map((item, i) => (
-            <div key={i} className="text-center lg:border-r last:border-0 border-gray-100 py-2">
-              <h3 className="text-4xl font-black text-gray-900">{item.value}</h3>
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mt-2">{item.label}</p>
+            <div key={i} className="text-center border-b sm:border-b-0 sm:lg:border-r last:border-0 border-gray-100 py-4 flex flex-col items-center justify-center">
+              <h3 className="text-3xl sm:text-4xl font-black text-gray-900">{item.value}</h3>
+              <p className="text-xs sm:text-sm font-bold text-gray-400 uppercase tracking-widest mt-2">{item.label}</p>
             </div>
           ))}
         </div>
@@ -274,7 +288,7 @@ const AboutUs = () => {
 
         <div className="mx-auto max-w-6xl">
           {team.map((member, idx) => (
-            <div key={member.name} className="border-b border-black/10">
+            <div key={member.name} className="group border-b border-black/10">
               <div
                 className={
                   `flex min-h-[440px] flex-col items-stretch md:flex-row ` +
@@ -282,13 +296,13 @@ const AboutUs = () => {
                 }
               >
                 {/* Photo side */}
-                <div className="relative w-full md:w-1/2">
-                  <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-200" />
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(0,0,0,0.10),transparent_55%)]" />
+                <div className="relative w-full overflow-hidden h-48 sm:h-56 md:h-auto md:w-1/2 flex items-end md:block">
+                  <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-200 transition-opacity duration-500 group-hover:opacity-90 hidden md:block" />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(0,0,0,0.10),transparent_55%)] transition-opacity duration-500 group-hover:opacity-70 hidden md:block" />
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="absolute inset-x-0 bottom-0 mx-auto h-full w-full object-contain px-8 md:px-10"
+                    className="w-full h-full object-contain px-8 transition-transform duration-700 ease-out will-change-transform group-hover:-translate-y-1 group-hover:scale-[1.03] md:absolute md:inset-x-0 md:bottom-0 md:px-10"
                   />
                 </div>
 
@@ -309,14 +323,14 @@ const AboutUs = () => {
 
                     <div className="mt-6 flex items-center gap-3">
                       <a
-                        href={member.twitterHref}
+                        href={member.linkedinHref}
                         className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#1da1f2] text-white transition-transform hover:scale-105"
-                        aria-label="Twitter"
+                        aria-label="LinkedIn"
                       >
-                        <FiTwitter />
+                        <FiLinkedin />
                       </a>
                       <span className="text-xs font-black uppercase tracking-[0.22em] text-[#1da1f2]">
-                        {member.twitterHandle}
+                        {member.linkedinHandle}
                       </span>
                     </div>
                   </div>
@@ -324,6 +338,101 @@ const AboutUs = () => {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* 6. ADVISORS () */}
+      <section className="bg-gray-100 pb-7 md:pb-11">
+        <div className="relative bg-[#1a1a1a] py-4 text-center">
+          <p className="text-sm font-black uppercase tracking-[0.42em] text-white md:text-base">
+            Meet the Advisors
+          </p>
+          <span className="pointer-events-none absolute left-1/2 top-full h-0 w-0 -translate-x-1/2 border-l-[16px] border-r-[16px] border-t-[12px] border-l-transparent border-r-transparent border-t-[#1a1a1a]" />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl pt-6 md:pt-8">
+          <div aria-hidden="true" className="pointer-events-none absolute bottom-4 left-1/2 top-6 hidden w-px -translate-x-1/2 bg-black/40 md:block md:top-8" />
+
+          <div className="grid items-stretch md:grid-cols-2">
+            {advisors.map((member, idx) => {
+              const initials = member.name
+                .split(' ')
+                .filter(Boolean)
+                .slice(0, 2)
+                .map((part) => part[0].toUpperCase())
+                .join('');
+
+              return (
+                <div
+                  key={member.name}
+                  className={
+                    'group h-full py-0 ' +
+                    (idx === 0
+                      ? 'border-b border-black/10 md:border-b-0 md:pr-16'
+                      : 'md:pl-16')
+                  }
+                >
+                  <div
+                    className={
+                      'flex h-full min-h-[110px] flex-col items-stretch md:flex-row md:gap-2 ' +
+                      (idx === 1 ? 'md:flex-row-reverse' : '')
+                    }
+                  >
+                    {/* Photo side */}
+                    <div className={
+                      "relative w-full overflow-visible h-48 sm:h-56 md:h-full md:min-h-[240px] md:flex-[1.9] flex items-end md:block " +
+                      (idx === 0 ? "md:-ml-8 lg:-ml-12" : "md:-mr-8 lg:-mr-12")
+                    }>
+                      <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-200 transition-opacity duration-500 group-hover:opacity-90" />
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(0,0,0,0.10),transparent_55%)] transition-opacity duration-500 group-hover:opacity-70" />
+
+                      {member.image ? (
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className={
+                            "w-full h-full object-contain px-0 transition-transform duration-700 ease-out will-change-transform group-hover:-translate-y-1 group-hover:scale-[1.03] md:absolute md:inset-x-0 md:bottom-0 " +
+                            (idx === 1 ? "md:object-right" : "md:object-left")
+                          }
+                        />
+                      ) : (
+                        <div
+                          className={
+                            "absolute inset-0 flex items-center justify-center " +
+                            (idx === 1 ? "md:justify-end md:pr-10" : "md:justify-start md:pl-10")
+                          }
+                        >
+                          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white/70 text-xl font-black tracking-[0.12em] text-gray-700 shadow-sm ring-1 ring-black/10 transition-transform duration-700 ease-out group-hover:-translate-y-1 group-hover:scale-[1.03]">
+                            {initials}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Content side */}
+                    <div className="flex h-full w-full items-start bg-white px-7 py-4 md:flex-[1.4] md:px-10">
+                      <div className={"w-full max-w-none " + (idx === 0 ? "md:text-right" : "md:text-left")}
+                      >
+                        <p className="text-[11px] font-black uppercase tracking-[0.24em] text-red-600">
+                          {member.role}
+                        </p>
+                        <h3 className="mt-1 text-2xl font-black tracking-[0.12em] text-gray-800 md:text-3xl">
+                          {member.name}
+                        </h3>
+
+                        <div className="mt-2 space-y-2 text-sm leading-relaxed text-gray-600">
+                          <p>{member.bio}</p>
+                          <p>{member.bio2}</p>
+                        </div>
+
+                        {/* No LinkedIn icon for advisors */}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
