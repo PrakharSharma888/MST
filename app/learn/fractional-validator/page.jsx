@@ -101,15 +101,7 @@ export default function SupplyChainPage() {
         </div>
 
         {/* 🔴 HERO */}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        <section className="relative pt-32 pb-2 px-6">
-=======
         <section className="relative pt-32 pb-28 px-6 bg white">
->>>>>>> Stashed changes
-=======
-        <section className="relative pt-32 pb-28 px-6 bg white">
->>>>>>> Stashed changes
 
           <div className="relative z-10 max-w-7xl mx-auto grid md:grid-cols-[1fr_1.25fr] gap-12 items-center">
             <motion.div
